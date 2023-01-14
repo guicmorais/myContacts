@@ -23,10 +23,7 @@ Projeto que insere, atualiza e deleta número e informações de contatos;
 
 ## 📣 Status
 
-<br/>
-
 <h3>🔵 - Em construção;</h3>
-<br/>
 
 ## 🔝 Preview
 
