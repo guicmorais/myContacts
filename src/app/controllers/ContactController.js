@@ -48,8 +48,39 @@ class ContactController {
     response.json(contact);
   }
 
-  update() {
+  // eslint-disable-next-line no-shadow
+  async update(request, response) {
     // Editar um registro
+    const { id } = request.params;
+    const {
+      name, email, phone, category_id,
+    } = request.body;
+
+    const contactExists = await ContactRepository.findById(id);
+
+    // validação ID
+    if (!contactExists) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    // validação name
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required!' });
+    }
+
+    // validação p/ email se está em uso ou livre para uso:
+    const contactByEmail = await ContactRepository.findByEmail(email);
+
+    if (contactByEmail && contactByEmail.id !== id) {
+      return response.status(400).json({ error: 'Email is already in use!' });
+    }
+
+    // após validar
+    const contact = await ContactRepository.update(id, {
+      name, email, phone, category_id,
+    });
+
+    response.json(contact);
   }
 
   // eslint-disable-next-line no-shadow, consistent-return
