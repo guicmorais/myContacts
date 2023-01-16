@@ -38,6 +38,7 @@ Desenvolvimento back-end de uma API Rest (CRUD) de contatos utilizando Node.js c
     - React
     - Styled-Components
     - Docker
+    - PostgreSQL
     - API Rest
     - Node.js com Express
     - Yarn
