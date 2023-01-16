@@ -24,8 +24,28 @@ class ContactController {
     response.json(contact);
   }
 
-  store() {
+  // eslint-disable-next-line no-shadow
+  async store(request, response) {
     // Criar novo registo
+    const {
+      name, email, phone,
+    } = request.body;
+
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required!' });
+    }
+
+    const contactExists = await ContactRepository.findByEmail(email);
+
+    if (contactExists) {
+      return response.status(400).json({ error: 'Email is already exist!' });
+    }
+
+    const contact = await ContactRepository.create({
+      name, email, phone,
+    });
+
+    response.json(contact);
   }
 
   update() {
