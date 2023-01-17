@@ -6,7 +6,9 @@ class ContactController {
   // eslint-disable-next-line no-shadow
   async index(request, response) {
     // Listar todos os registros
-    const contacts = await ContactRepository.findAll();
+    const { orderBy } = request.query;
+
+    const contacts = await ContactRepository.findAll(orderBy);
     response.json(contacts);
   }
 
