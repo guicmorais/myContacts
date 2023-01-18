@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line import/no-extraneous-dependencies
 require('express-async-errors');
 
 const routes = require('./routes');
