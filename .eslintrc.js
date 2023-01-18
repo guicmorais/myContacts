@@ -16,5 +16,6 @@ module.exports = {
     'eslint-disable-next-line no-shadow': 'off',
     'no-undef': 'off',
     camelcase: 'off',
+    'no-shadow': 'off',
   },
 };
